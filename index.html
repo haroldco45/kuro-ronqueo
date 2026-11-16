@@ -103,6 +103,10 @@ h2{font-family:var(--serif);font-size:clamp(2rem,5.4vw,3.4rem);line-height:1.08;
 .cut::before{content:"";position:absolute;inset:auto 0 0 0;height:4px;background:var(--c,var(--tuna));transform:scaleX(.15);transform-origin:left;transition:.5s}
 .cut:hover,.cut.open{border-color:#3a3a44;transform:translateY(-4px)}
 .cut:hover::before,.cut.open::before{transform:scaleX(1)}
+.cut{padding:0 0 22px}.cut>*:not(.cph){margin-left:22px;margin-right:22px}
+.cph{aspect-ratio:16/10;overflow:hidden;margin-bottom:14px;background:#1a1012}
+.cph img{width:100%;height:100%;object-fit:cover;transition:1s}
+.cut:hover .cph img,.cut.open .cph img{transform:scale(1.08)}
 .cut .jp{font-family:var(--serif);font-size:1.9rem;color:var(--c,var(--tuna))}
 .cut h3{font-size:1.05rem;margin:4px 0 2px}
 .cut .es{font-size:.8rem;color:var(--mut);letter-spacing:.06em}
@@ -149,8 +153,8 @@ h2{font-family:var(--serif);font-size:clamp(2rem,5.4vw,3.4rem);line-height:1.08;
 
 /* videos */
 .vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:36px}
-.vid{border-radius:18px;overflow:hidden;background:#000;border:1px solid var(--line);height:740px}
-.vid iframe{width:100%;height:100%;border:0}
+.vid{border-radius:18px;overflow:hidden;background:#000;border:1px solid var(--line);display:flex;justify-content:center;min-height:120px}
+.vid blockquote section a{display:block;padding:40px 20px;color:var(--gold);font-weight:600;text-align:center}
 .credit{font-size:.7rem;color:#ffffff40;margin-top:14px}
 /* reserva */
 .res{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
@@ -289,11 +293,12 @@ footer .brand{color:var(--paper)}
       <p class="lead" data-i="p2g">Así lo cuentan quienes ya fueron al rooftop.</p>
     </div>
     <div class="vids">
-      <div class="vid reveal"><iframe src="https://www.tiktok.com/embed/v2/7266574419848449285" allow="encrypted-media; fullscreen" loading="lazy" title="Kuro en TikTok"></iframe></div>
-      <div class="vid reveal"><iframe src="https://www.tiktok.com/embed/v2/7441003684953181495" allow="encrypted-media; fullscreen" loading="lazy" title="Kuro en TikTok"></iframe></div>
+      <div class="vid reveal"><blockquote class="tiktok-embed" cite="https://www.tiktok.com/@parasaborearse/video/7266574419848449285" data-video-id="7266574419848449285" style="max-width:605px;min-width:300px;margin:0"><section><a target="_blank" rel="noopener" href="https://www.tiktok.com/@parasaborearse/video/7266574419848449285">Ver video de Kuro en TikTok · @parasaborearse</a></section></blockquote></div>
+      <div class="vid reveal"><blockquote class="tiktok-embed" cite="https://www.tiktok.com/@sofirojasj/video/7441003684953181495" data-video-id="7441003684953181495" style="max-width:605px;min-width:300px;margin:0"><section><a target="_blank" rel="noopener" href="https://www.tiktok.com/@sofirojasj/video/7441003684953181495">Ver video de Kuro en TikTok · @sofirojasj</a></section></blockquote></div>
     </div>
   </div>
 </section>
+<script async src="https://www.tiktok.com/embed.js"></script>
 
 <section id="reserva" style="background:var(--ink2);border-top:1px solid var(--line)">
   <div class="wrap res">
@@ -356,12 +361,12 @@ const T={
 document.querySelectorAll("[data-i]").forEach(e=>T.es[e.dataset.i]=e.innerHTML);
 
 const CUTS=[
- {jp:"赤身",n:"Akami",es:{t:"Lomo magro",d:"La carne roja del lomo. Sabor limpio y firme, la base del sashimi y del nigiri clásico."},en:{t:"Lean loin",d:"Red loin meat. Clean, firm flavour — the base of classic sashimi and nigiri."},f:1,c:"#c8283a"},
- {jp:"中トロ",n:"Chutoro",es:{t:"Semigraso",d:"Entre el lomo y la ventresca. Equilibrio perfecto entre sabor a atún y grasa que se derrite."},en:{t:"Medium fatty",d:"Between loin and belly. A perfect balance of tuna flavour and melting fat."},f:3,c:"#d9575f"},
- {jp:"大トロ",n:"Otoro",es:{t:"Ventresca",d:"La parte más grasa de la barriga. Se deshace en la boca; es el corte más buscado."},en:{t:"Fatty belly",d:"The fattiest part of the belly. Melts in your mouth — the most prized cut."},f:5,c:"#e9a2a0"},
- {jp:"中落ち",n:"Nakaochi",es:{t:"Raspado del espinazo",d:"La carne que queda pegada a la espina, raspada con cuchara frente a los comensales. Es el momento estrella del ronqueo."},en:{t:"Spine scrapings",d:"Meat left on the backbone, scraped with a spoon in front of guests. The highlight of the ronqueo."},f:3,c:"#c9a45c"},
- {jp:"カマ",n:"Kama",es:{t:"Cogote o collar",d:"La zona detrás de las agallas. Jugosa y perfecta para la parrilla o el horno."},en:{t:"Collar",d:"The area behind the gills. Juicy and perfect for grilling or roasting."},f:4,c:"#b88a4a"},
- {jp:"頬肉",n:"Hoho niku",es:{t:"Cachete",d:"Un bocado pequeño y escaso, de textura tierna. Pocos lo llegan a probar."},en:{t:"Cheek",d:"A small, rare morsel with a tender texture. Few people ever get to try it."},f:2,c:"#9a5a4a"}
+ {jp:"赤身",n:"Akami",img:"https://images.unsplash.com/photo-1682457569891-53e4f6ef9271?auto=format&fit=crop&w=700&q=70",es:{t:"Lomo magro",d:"La carne roja del lomo. Sabor limpio y firme, la base del sashimi y del nigiri clásico."},en:{t:"Lean loin",d:"Red loin meat. Clean, firm flavour — the base of classic sashimi and nigiri."},f:1,c:"#c8283a"},
+ {jp:"中トロ",n:"Chutoro",img:"https://images.unsplash.com/photo-1772285268647-11deb0bdbe29?auto=format&fit=crop&w=700&q=70",es:{t:"Semigraso",d:"Entre el lomo y la ventresca. Equilibrio perfecto entre sabor a atún y grasa que se derrite."},en:{t:"Medium fatty",d:"Between loin and belly. A perfect balance of tuna flavour and melting fat."},f:3,c:"#d9575f"},
+ {jp:"大トロ",n:"Otoro",img:"https://images.unsplash.com/photo-1763943431214-275e64002f90?auto=format&fit=crop&w=700&q=70",es:{t:"Ventresca",d:"La parte más grasa de la barriga. Se deshace en la boca; es el corte más buscado."},en:{t:"Fatty belly",d:"The fattiest part of the belly. Melts in your mouth — the most prized cut."},f:5,c:"#e9a2a0"},
+ {jp:"中落ち",n:"Nakaochi",img:"https://images.unsplash.com/photo-1674063765936-d032795f4e1e?auto=format&fit=crop&w=700&q=70",es:{t:"Raspado del espinazo",d:"La carne que queda pegada a la espina, raspada con cuchara frente a los comensales. Es el momento estrella del ronqueo."},en:{t:"Spine scrapings",d:"Meat left on the backbone, scraped with a spoon in front of guests. The highlight of the ronqueo."},f:3,c:"#c9a45c"},
+ {jp:"カマ",n:"Kama",img:"https://images.unsplash.com/photo-1566177229701-8895c29b9c68?auto=format&fit=crop&w=700&q=70",es:{t:"Cogote o collar",d:"La zona detrás de las agallas. Jugosa y perfecta para la parrilla o el horno."},en:{t:"Collar",d:"The area behind the gills. Juicy and perfect for grilling or roasting."},f:4,c:"#b88a4a"},
+ {jp:"頬肉",n:"Hoho niku",img:"https://images.unsplash.com/photo-1609149401278-727e55e0bbc1?auto=format&fit=crop&w=700&q=70",es:{t:"Cachete",d:"Un bocado pequeño y escaso, de textura tierna. Pocos lo llegan a probar."},en:{t:"Cheek",d:"A small, rare morsel with a tender texture. Few people ever get to try it."},f:2,c:"#9a5a4a"}
 ];
 const EXPS=[
  {img:"https://images.unsplash.com/photo-1691120217303-dfc557ff9c4c?auto=format&fit=crop&w=900&q=70",es:{k:"Evento especial",t:"Ronqueo en vivo",d:"El chef despieza el atún frente a ti, explica cada corte y luego lo sirve en tu mesa."},en:{k:"Special event",t:"Live ronqueo",d:"The chef breaks down the tuna in front of you, explains every cut and then serves it at your table."}},
@@ -369,7 +374,7 @@ const EXPS=[
  {img:"https://images.unsplash.com/photo-1681270543584-8e541a1bb056?auto=format&fit=crop&w=900&q=70",es:{k:"Aprende",t:"Clase de sushi",d:"Aprende con los chefs de Kuro: ingredientes, cortes y el balance de sabores japonés."},en:{k:"Learn",t:"Sushi class",d:"Learn with Kuro’s chefs: ingredients, cuts and the Japanese balance of flavours."}},
  {img:"https://images.unsplash.com/photo-1731460202229-295e879feb53?auto=format&fit=crop&w=900&q=70",es:{k:"Noche",t:"Cena en el rooftop",d:"Sushi, sake y DJ con vista a Medellín. Para celebrar en grande."},en:{k:"Night",t:"Rooftop dinner",d:"Sushi, sake and a DJ with views over Medellín. Made for celebrating."}}
 ];
-const GAL=["https://images.unsplash.com/photo-1779298167661-91729bbc7410?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1763943431214-275e64002f90?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1772285283419-b34f42b4a4df?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1760559059115-96955377ef30?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1758384075930-6e3835d22b1d?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1712725213572-443fe866a69a?auto=format&fit=crop&w=900&q=70"];
+const GAL=["https://images.unsplash.com/photo-1779298167661-91729bbc7410?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1791386809533-5c2e79e34665?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1772285283419-b34f42b4a4df?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1760559059115-96955377ef30?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1758384075930-6e3835d22b1d?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1712725213572-443fe866a69a?auto=format&fit=crop&w=900&q=70"];
 
 function t(k){return (T[L]&&T[L][k])||T.es[k]}
 function render(){
@@ -380,7 +385,7 @@ function render(){
  const words=CUTS.map(c=>`<span class="r">${c.jp}</span><span>${c.n}</span>`).join("")+`<span class="r">鮪</span><span>${L==="es"?"Ronqueo en vivo":"Live ronqueo"}</span>`;
  document.getElementById("mq").innerHTML=words+words;
  // cortes
- document.getElementById("cuts").innerHTML=CUTS.map((c,i)=>`<div class="cut reveal" style="--c:${c.c}" onclick="this.classList.toggle('open')"><div class="jp">${c.jp}</div><h3>${c.n}</h3><div class="es">${c[L].t}</div><div class="fat">${[1,2,3,4,5].map(n=>`<i class="${n<=c.f?'on':''}"></i>`).join("")}</div><p>${c[L].d}</p></div>`).join("");
+ document.getElementById("cuts").innerHTML=CUTS.map((c,i)=>`<div class="cut reveal" style="--c:${c.c}" onclick="this.classList.toggle('open')"><div class="cph"><img src="${c.img}" alt="${c.n}" loading="lazy"></div><div class="jp">${c.jp}</div><h3>${c.n}</h3><div class="es">${c[L].t}</div><div class="fat">${[1,2,3,4,5].map(n=>`<i class="${n<=c.f?'on':''}"></i>`).join("")}</div><p>${c[L].d}</p></div>`).join("");
  // experiencias
  document.getElementById("exps").innerHTML=EXPS.map(x=>`<div class="exp reveal"><div class="ph"><img src="${x.img}" alt="${x[L].t}" loading="lazy" onerror="this.remove()"></div><div class="tx"><span class="k">${x[L].k}</span><h3>${x[L].t}</h3><p>${x[L].d}</p><button class="btn ghost" onclick="pick('${x.es.t}')">${L==="es"?"Quiero este plan":"I want this"}</button></div></div>`).join("");
  document.getElementById("x").innerHTML=EXPS.map(x=>`<option value="${x.es.t}">${x[L].t}</option>`).join("");
