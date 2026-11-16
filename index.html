@@ -14,12 +14,12 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kuro · Ronqueo de Atún en Vivo · Medellín">
 <meta property="og:description" content="El atún del Pacífico colombiano, cortado frente a ti. Reserva tu experiencia por WhatsApp.">
-<meta property="og:image" content="https://kuro-ronqueo.netlify.app/img/og.jpg">
+<meta property="og:image" content="https://images.unsplash.com/photo-1562513763-ddbd3a4609cf?auto=format&fit=crop&w=1200&h=630&q=75">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://kuro-ronqueo.netlify.app/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kuro-ronqueo.netlify.app/img/og.jpg">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1562513763-ddbd3a4609cf?auto=format&fit=crop&w=1200&h=630&q=75">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -147,6 +147,11 @@ h2{font-family:var(--serif);font-size:clamp(2rem,5.4vw,3.4rem);line-height:1.08;
 .gal figure:hover img{transform:scale(1.08)}
 .gal figure.empty::after{content:attr(data-t);position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);color:#ffffff22;font-size:1.3rem;letter-spacing:.2em}
 
+/* videos */
+.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:36px}
+.vid{border-radius:18px;overflow:hidden;background:#000;border:1px solid var(--line);height:740px}
+.vid iframe{width:100%;height:100%;border:0}
+.credit{font-size:.7rem;color:#ffffff40;margin-top:14px}
 /* reserva */
 .res{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
 form{display:grid;gap:14px;background:var(--ink2);border:1px solid var(--line);border-radius:22px;padding:28px}
@@ -188,9 +193,7 @@ footer .brand{color:var(--paper)}
 
 <section class="hero" style="padding:0">
   <div class="bg">
-    <video id="heroVid" autoplay muted loop playsinline poster="img/hero.jpg" onerror="this.remove()">
-      <source src="video/ronqueo.mp4" type="video/mp4">
-    </video>
+    <img src="https://images.unsplash.com/photo-1562513763-ddbd3a4609cf?auto=format&fit=crop&w=1600&q=70" alt="Chef cortando atún fresco">
   </div>
   <div class="kanji">鮪</div>
   <div class="in">
@@ -220,7 +223,7 @@ footer .brand{color:var(--paper)}
       </div>
     </div>
     <div class="frame reveal">
-      <img src="img/ronqueo-1.jpg" alt="Chef de Kuro cortando el atún" loading="lazy" onerror="this.remove()">
+      <img src="https://images.unsplash.com/photo-1772329320539-d297125453c1?auto=format&fit=crop&w=1000&q=70" alt="Chef de Kuro cortando el atún" loading="lazy" onerror="this.remove()">
       <span class="tag" data-i="tag">Pesca responsable</span>
     </div>
   </div>
@@ -274,6 +277,21 @@ footer .brand{color:var(--paper)}
       <h2 data-i="h2e">Así se vive</h2>
     </div>
     <div class="gal" id="gal"></div>
+    <p class="credit" data-i="cr">Fotos de referencia: Unsplash. Se reemplazan por las fotos propias de Kuro.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow" data-i="e7">Videos</span>
+      <h2 data-i="h2g">Kuro en video</h2>
+      <p class="lead" data-i="p2g">Así lo cuentan quienes ya fueron al rooftop.</p>
+    </div>
+    <div class="vids">
+      <div class="vid reveal"><iframe src="https://www.tiktok.com/embed/v2/7266574419848449285" allow="encrypted-media; fullscreen" loading="lazy" title="Kuro en TikTok"></iframe></div>
+      <div class="vid reveal"><iframe src="https://www.tiktok.com/embed/v2/7441003684953181495" allow="encrypted-media; fullscreen" loading="lazy" title="Kuro en TikTok"></iframe></div>
+    </div>
   </div>
 </section>
 
@@ -333,7 +351,7 @@ const T={
  e4:"Experiences at Kuro",h2d:"Choose your plan",e5:"Gallery",h2e:"What it feels like",
  e6:"Booking",h2f:"Save your seat at the bar",p2f:"Ronqueo nights have limited seats. Message us and we’ll tell you the next date.",
  hc:"Time in Medellín",dir:"Address",map:"Open in Google Maps",fn:"Name",fd:"Date",fp:"Guests",fe:"Experience",fm:"Comment",send:"Send via WhatsApp",
- ft1:"Sake & Sushi bar. A tribute to the Pacific Ocean.",ft2:"App proposed and built by"}
+ e7:"Videos",h2g:"Kuro on video",p2g:"Told by people who have already been to the rooftop.",cr:"Reference photos: Unsplash. To be replaced with Kuro’s own photos.",ft1:"Sake & Sushi bar. A tribute to the Pacific Ocean.",ft2:"App proposed and built by"}
 };
 document.querySelectorAll("[data-i]").forEach(e=>T.es[e.dataset.i]=e.innerHTML);
 
@@ -346,12 +364,12 @@ const CUTS=[
  {jp:"頬肉",n:"Hoho niku",es:{t:"Cachete",d:"Un bocado pequeño y escaso, de textura tierna. Pocos lo llegan a probar."},en:{t:"Cheek",d:"A small, rare morsel with a tender texture. Few people ever get to try it."},f:2,c:"#9a5a4a"}
 ];
 const EXPS=[
- {img:"img/exp-ronqueo.jpg",es:{k:"Evento especial",t:"Ronqueo en vivo",d:"El chef despieza el atún frente a ti, explica cada corte y luego lo sirve en tu mesa."},en:{k:"Special event",t:"Live ronqueo",d:"The chef breaks down the tuna in front of you, explains every cut and then serves it at your table."}},
- {img:"img/exp-omakase.jpg",es:{k:"En la barra",t:"Omakase",d:"El chef arma el menú del día con lo más fresco. Tú solo te sientas en la barra y confías."},en:{k:"At the bar",t:"Omakase",d:"The chef builds the day’s menu from the freshest catch. You just sit at the bar and trust."}},
- {img:"img/exp-clase.jpg",es:{k:"Aprende",t:"Clase de sushi",d:"Aprende con los chefs de Kuro: ingredientes, cortes y el balance de sabores japonés."},en:{k:"Learn",t:"Sushi class",d:"Learn with Kuro’s chefs: ingredients, cuts and the Japanese balance of flavours."}},
- {img:"img/exp-rooftop.jpg",es:{k:"Noche",t:"Cena en el rooftop",d:"Sushi, sake y DJ con vista a Medellín. Para celebrar en grande."},en:{k:"Night",t:"Rooftop dinner",d:"Sushi, sake and a DJ with views over Medellín. Made for celebrating."}}
+ {img:"https://images.unsplash.com/photo-1691120217303-dfc557ff9c4c?auto=format&fit=crop&w=900&q=70",es:{k:"Evento especial",t:"Ronqueo en vivo",d:"El chef despieza el atún frente a ti, explica cada corte y luego lo sirve en tu mesa."},en:{k:"Special event",t:"Live ronqueo",d:"The chef breaks down the tuna in front of you, explains every cut and then serves it at your table."}},
+ {img:"https://images.unsplash.com/photo-1787462160120-9d018028c245?auto=format&fit=crop&w=900&q=70",es:{k:"En la barra",t:"Omakase",d:"El chef arma el menú del día con lo más fresco. Tú solo te sientas en la barra y confías."},en:{k:"At the bar",t:"Omakase",d:"The chef builds the day’s menu from the freshest catch. You just sit at the bar and trust."}},
+ {img:"https://images.unsplash.com/photo-1681270543584-8e541a1bb056?auto=format&fit=crop&w=900&q=70",es:{k:"Aprende",t:"Clase de sushi",d:"Aprende con los chefs de Kuro: ingredientes, cortes y el balance de sabores japonés."},en:{k:"Learn",t:"Sushi class",d:"Learn with Kuro’s chefs: ingredients, cuts and the Japanese balance of flavours."}},
+ {img:"https://images.unsplash.com/photo-1731460202229-295e879feb53?auto=format&fit=crop&w=900&q=70",es:{k:"Noche",t:"Cena en el rooftop",d:"Sushi, sake y DJ con vista a Medellín. Para celebrar en grande."},en:{k:"Night",t:"Rooftop dinner",d:"Sushi, sake and a DJ with views over Medellín. Made for celebrating."}}
 ];
-const GAL=["galeria-1","galeria-2","galeria-3","galeria-4","galeria-5","galeria-6"];
+const GAL=["https://images.unsplash.com/photo-1779298167661-91729bbc7410?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1763943431214-275e64002f90?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1772285283419-b34f42b4a4df?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1760559059115-96955377ef30?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1758384075930-6e3835d22b1d?auto=format&fit=crop&w=900&q=70", "https://images.unsplash.com/photo-1712725213572-443fe866a69a?auto=format&fit=crop&w=900&q=70"];
 
 function t(k){return (T[L]&&T[L][k])||T.es[k]}
 function render(){
@@ -367,7 +385,7 @@ function render(){
  document.getElementById("exps").innerHTML=EXPS.map(x=>`<div class="exp reveal"><div class="ph"><img src="${x.img}" alt="${x[L].t}" loading="lazy" onerror="this.remove()"></div><div class="tx"><span class="k">${x[L].k}</span><h3>${x[L].t}</h3><p>${x[L].d}</p><button class="btn ghost" onclick="pick('${x.es.t}')">${L==="es"?"Quiero este plan":"I want this"}</button></div></div>`).join("");
  document.getElementById("x").innerHTML=EXPS.map(x=>`<option value="${x.es.t}">${x[L].t}</option>`).join("");
  // galería
- document.getElementById("gal").innerHTML=GAL.map(g=>`<figure class="reveal" data-t="KURO"><img src="img/${g}.jpg" alt="Kuro Medellín" loading="lazy" onerror="this.parentNode.classList.add('empty');this.remove()"></figure>`).join("");
+ document.getElementById("gal").innerHTML=GAL.map(g=>`<figure class="reveal" data-t="KURO"><img src="${g}" alt="Kuro Medellín" loading="lazy" onerror="this.parentNode.classList.add('empty');this.remove()"></figure>`).join("");
  // chips
  const ch=[[40,L==="es"?"Atún pequeño":"Small tuna"],[60,L==="es"?"Aleta amarilla":"Yellowfin"],[120,L==="es"?"Grande":"Large"],[392,L==="es"?"Aleta azul récord":"Record bluefin"]];
  document.getElementById("chips").innerHTML=ch.map(c=>`<button class="chip" onclick="setKg(${c[0]})">${c[1]} · ${c[0]} kg</button>`).join("");
@@ -425,10 +443,6 @@ document.getElementById("refresh").onclick=async()=>{
 };
 function toast(m){const e=document.getElementById("toast");e.textContent=m;e.classList.add("on");setTimeout(()=>e.classList.remove("on"),1800)}
 
-// si no hay video, usar la foto
-document.getElementById("heroVid").querySelector("source").addEventListener("error",()=>{
- const v=document.getElementById("heroVid"),i=new Image();i.src="img/hero.jpg";i.alt="Kuro";i.onerror=()=>i.remove();v.replaceWith(i);
-});
 
 render();
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
